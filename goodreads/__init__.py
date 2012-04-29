@@ -51,3 +51,14 @@ class GoodReadsClient(object):
 
         url_handler = self.unauthorized_request(url, query_params)
         return self.parser.parse_books(url_handler)
+
+    def search(value, page, search_type='title'):
+        url = "%ssearch.xml" % self.BASE_URL
+        query_params = {
+            "q": value,
+            "page": page,
+            "search": search_type
+        }
+
+        url_handler = self.unauthorized_request(url, query_params)
+        return self.parser.parse_books(url_handler)
